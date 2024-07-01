@@ -1,4 +1,4 @@
-import styled, { ThemeProvider } from "styled-components";
+import { ThemeProvider , styled } from "styled-components";
 import { lightTheme } from "./utils/Themes";
 import { BrowserRouter } from "react-router-dom";
 import Authentication from "./pages/Authentication";

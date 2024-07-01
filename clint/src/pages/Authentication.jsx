@@ -15,44 +15,78 @@ const Container = styled.div`
 
 const Left = styled.div`
   flex: 1;
-  background: blue;
   @media (max-width: 700px) {
     display: none;
   }
 `;
 
 const Logo = styled.img`
-  position: absolute; // absolu
-  width: 100px; // Adjust the width as needed
-  top: 40px;
-  left: 40px; // Adjust the position as needed
+  position: absolute;
+  width: 100px;
+  top: 20px;
+  left: 20px;
   z-index: 10;
-  height: auto; // Maintain aspect ratio
+  height: auto;
 `;
 
 const Image = styled.img`
-
   position: relative;
-  width: 100%; 
-  height: 100%; 
-  object-fit:cover; 
-  
+  width: 100%;
+  height: 100vh%;
+  object-fit: cover;
+  @media (max-width: 849px) {
+    height: 100%;
+  }
 `;
 
 const Right = styled.div`
   flex: 1;
-  background: red;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Text = styled.div`
+  @media (max-width: 400px) {
+  fomt-size: 14px;
+  }
+`;
+
+const TextButton = styled.span`
+
+  color: ${({ theme }) => theme.primary};
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const Authentication = () => {
   const [login, setLogin] = useState(false);
+
   return (
     <Container>
       <Left>
         <Logo src={LogoImage} alt="Logo" />
         <Image src={Authimage} alt="Authentication Image" />
       </Left>
-      <Right>{login ? <text>Don't have an account? SingUp </text> : <text>Already have an account</text>}</Right>
+      <Right>
+        {login ? (
+          <Text>
+            Don't have an account? <TextButton>Sign Up</TextButton>
+          </Text>
+        ) : (
+          <Text>
+            Already have an account? <TextButton>Log In</TextButton>
+          </Text>
+        )}
+      </Right>
     </Container>
   );
 };

@@ -68,7 +68,7 @@ const TextButton = styled.span`
 `;
 
 const Authentication = () => {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(False);
 
   return (
     <Container>
@@ -79,11 +79,11 @@ const Authentication = () => {
       <Right>
         {login ? (
           <Text>
-            Don't have an account? <TextButton>Sign Up</TextButton>
+            Don't have an account? <TextButton onClick={()=> {setLogin(False)}}>Sign Up</TextButton>
           </Text>
         ) : (
           <Text>
-            Already have an account? <TextButton>Log In</TextButton>
+            Already have an account? <TextButton  onClick={()=> {setLogin(True)}}>Log In</TextButton>
           </Text>
         )}
       </Right>

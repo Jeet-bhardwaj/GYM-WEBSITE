@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import LogoImage from "../utils/Images/Logo.png";
 import Authimage from "../utils/Images/AuthImage.jpg";
+import SignUp from "./SignUp";
+import SignIn from "./SignIn";
 
 const Container = styled.div`
   flex: 1;
@@ -52,12 +54,11 @@ const Right = styled.div`
 
 const Text = styled.div`
   @media (max-width: 400px) {
-  fomt-size: 14px;
+    fomt-size: 14px;
   }
 `;
 
 const TextButton = styled.span`
-
   color: ${({ theme }) => theme.primary};
   cursor: pointer;
   transition: all 0.3s ease;
@@ -68,7 +69,7 @@ const TextButton = styled.span`
 `;
 
 const Authentication = () => {
-  const [login, setLogin] = useState(False);
+  const [login, setLogin] = useState("True");
 
   return (
     <Container>
@@ -77,14 +78,35 @@ const Authentication = () => {
         <Image src={Authimage} alt="Authentication Image" />
       </Left>
       <Right>
-        {login ? (
-          <Text>
-            Don't have an account? <TextButton onClick={()=> {setLogin(False)}}>Sign Up</TextButton>
-          </Text>
+        {!login ? (
+          <>
+            <SignIn />
+            <Text>
+              Don't have an account?{" "}
+              <TextButton
+                onClick={() => {
+                  setLogin("False");
+                }}
+              >
+                Sign Up
+              </TextButton>
+            </Text>
+          </>
         ) : (
-          <Text>
-            Already have an account? <TextButton  onClick={()=> {setLogin(True)}}>Log In</TextButton>
-          </Text>
+          <>
+          <SignUp />
+            {" "}
+            <Text>
+              Already have an account?{" "}
+              <TextButton
+                onClick={() => {
+                  setLogin("True");
+                }}
+              >
+                Log In
+              </TextButton>
+            </Text>
+          </>
         )}
       </Right>
     </Container>

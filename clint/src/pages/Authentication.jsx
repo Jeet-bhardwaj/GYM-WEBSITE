@@ -82,21 +82,6 @@ const Authentication = () => {
           <>
             <SignIn />
             <Text>
-              Don't have an account?{" "}
-              <TextButton
-                onClick={() => {
-                  setLogin("False");
-                }}
-              >
-                Sign Up
-              </TextButton>
-            </Text>
-          </>
-        ) : (
-          <>
-          <SignUp />
-            {" "}
-            <Text>
               Already have an account?{" "}
               <TextButton
                 onClick={() => {
@@ -104,6 +89,20 @@ const Authentication = () => {
                 }}
               >
                 Log In
+              </TextButton>
+            </Text>
+          </>
+        ) : (
+          <>
+            <SignUp />
+            <Text>
+              Don't have an account?{" "}
+              <TextButton
+                onClick={() => {
+                  setLogin("False");
+                }}
+              >
+                Sign Up
               </TextButton>
             </Text>
           </>
